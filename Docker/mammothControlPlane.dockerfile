@@ -30,7 +30,7 @@ RUN apk --no-cache add supervisor libzmq libpq libc6-compat
 COPY "./Docker/ControlPlane/supervisord.conf" /etc/supervisor/conf.d/supervisord.conf
 
 RUN mkdir -pv /srv/mammoth-server/
-RUN wget -O /srv/mammoth-server/WorldQLServer https://github.com/WorldQL/mammoth/releases/download/v0.01-alpha/WorldQLServer
+RUN wget -O /srv/mammoth-server/WorldQLServer https://github.com/WorldQL/mammoth/releases/download/v0.02-alpha/WorldQLServer
 RUN chmod +x /srv/mammoth-server/WorldQLServer
 RUN chown -Rv nobody.nobody /srv/mammoth-server
 
