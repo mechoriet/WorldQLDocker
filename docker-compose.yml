@@ -10,7 +10,10 @@ services:
     depends_on:
       - control-plane
     ports:
-      - "25565:25565"
+      - mode: host
+        published: 25570
+        target: 25565
+
     networks:
       worldql:
 
@@ -26,7 +29,7 @@ services:
       - postgres-db
     networks:
       worldql:
-
+      
   postgres-db:
     image: postgres:13-alpine
     environment:
@@ -40,9 +43,12 @@ services:
 # Uncomment this section to expose an adminer GUI to have a tool available for exploring the database
   debug-adminer:
     image: adminer:latest
+    command: php -S 0.0.0.0:8080 -t /var/www/html
     restart: always
     ports:
-      - "8084:8080"
+      - mode: host
+        published: 8084
+        target: 8080
     environment:
       ADMINER_DEFAULT_SERVER: "postgres-db"
     links:
