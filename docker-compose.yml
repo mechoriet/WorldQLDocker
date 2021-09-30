@@ -2,7 +2,6 @@ version: "3.8"
 
 services:
   client-minecraft-server:
-    container_name: worldql-client-server-node
     build:
       dockerfile: Docker/mammothClientServer.dockerfile
       context: .
@@ -16,7 +15,6 @@ services:
       worldql:
 
   control-plane:
-    container_name: worldql-mammoth-control-plane
     build:
       dockerfile: Docker/mammothControlPlane.dockerfile
       context: .
